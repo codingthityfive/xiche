@@ -108,7 +108,7 @@
     vertical-align: middle;
     *zoom: 1;
     *display: inline;
-    text-align: left;
+    text-align: center;
 }
 .ui-dialog-footer {
     padding: 0 20px 20px 20px;
@@ -422,4 +422,17 @@
     transform: rotate(360deg);
     animation: ui-dialog-loading 1.5s infinite linear;
     display: none\9;
+}
+
+.frame_height{
+	height:500px;
+	overflow-y: scroll;
+}
+
+@media screen and (max-width: 1400px) {
+
+.frame_height{
+	height:300px;
+}
+
 }

@@ -815,9 +815,9 @@ var artDialog = function (options, ok, cancel) {
         options = {content: options, fixed: !_isMobile};
     }
     
-    console.log(artDialog.defaults,'=====================artDialog.defaults===================','------options----------',options);
+    // console.log(artDialog.defaults,'=====================artDialog.defaults===================','------options----------',options);
     options = $.extend(true, {}, artDialog.defaults, options);
-    console.log(options,'----------------options-----------------');
+    // console.log(options,'----------------options-----------------');
     options.original = originalOptions;
 
     var id = options.id = options.id || _expando + _count;

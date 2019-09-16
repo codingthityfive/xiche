@@ -54,7 +54,7 @@ $.jgrid.extend({
 				for(i=0;i<this.p.colNames.length;i++){
 					if(!$t.p.colModel[i].hidedlg) { // added from T. Tomov
 						formdata += "<tr><td style='white-space: pre;'><input type='checkbox' style='margin-right:5px;' id='col_" + this.p.colModel[i].name + "' class='cbox' value='T' " + 
-						((this.p.colModel[i].hidden===false)?"checked":"") + "/>" +  "<label for='col_" + this.p.colModel[i].name + "'>" + this.p.colNames[i] + ((p.colnameview) ? " (" + this.p.colModel[i].name + ")" : "" )+ "</label></td></tr>";
+						((this.p.colModel[i].hidden===false)?"checked":"") + "/>" +  "<label for='col_" + this.p.colModel[i].name + "'>" + this.p.colNames[i] + "</label></td></tr>";
 					}
 				}
 				formdata += "</tbody></table></div>"
