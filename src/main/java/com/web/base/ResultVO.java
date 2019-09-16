@@ -18,11 +18,25 @@ public class ResultVO<T>{
         this.code=resultCodeEnum.getCode();
         this.msg=resultCodeEnum.getMsg();
     }
-
-    public static<T> ResultVO<T> createSuccess(T result){
-        return new ResultVO(result);
+    
+    private ResultVO(int code,String msg,T result) {
+    	this.code=code;
+    	this.msg=msg;
+    	this.result=result;
     }
 
+    public static<T> ResultVO<T> createSuccess(T result){
+        return new ResultVO<T>(result);
+    }
+
+    public static<T> ResultVO<T> createResult(int code,String msg,T result) {
+    	return new ResultVO<T>(code,msg,result);
+    }
+    
+    public static<T> ResultVO<T> createError(T result) {
+    	return new ResultVO<T>(ResultCodeEnum.ERROR,result);
+    }
+    
     public int getCode() {
         return code;
     }
