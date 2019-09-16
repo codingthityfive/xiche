@@ -36,16 +36,6 @@
 		<div class="panel panel-default publicPanel">
 			<h4 class="publicPanelTitle">查询展示面板</h4>
 			<div class="dataTables_wrapper form-inline no-footer saasTableWrap">
-				<div class="dataTables_filter">
-					<label class="tableFilter">
-						过滤：
-						<input type="search" id="filterName" class="form-control input-sm">
-					</label>
-					<div class="tableChoose">
-                        <button class="btn btn-primary" onclick="showColumnDialog()">筛选列</button>
-						<div class="ChooseCheckbox"></div>
-					</div>
-				</div>
                 <table id="grid-table"></table>
                 <div id="grid-pager"></div>
 			</div>
@@ -53,6 +43,4 @@
 		
 	</body>
     <script src="/static/js/xiche/projectList.js"></script>
-
 </html>
-

@@ -16,7 +16,7 @@ $(document).ready(function () {
         datatype: "json", //数据来源，本地数据（local，json,jsonp,xml等）
         height: "auto",//高度，表格高度。可为数值、百分比或'auto'
         //mtype:"GET",//提交方式
-        colNames: ['序号','项目名称', '价格','积分','类型','状态'],
+        colNames: ['序号','项目名称', '价格','积分'],
         colModel: [{
             name: 'id',
             index: 'id',//索引。其和后台交互的参数为sidx
@@ -44,15 +44,16 @@ $(document).ready(function () {
             name: 'point',
             index: 'point',
             width: 60,
-        }, {
-            name: 'type',
-            index: 'type',
-            width: 60,
-        }, {
-            name: 'status',
-            index: 'status',
-            width: 60,
         }
+//        , {
+//            name: 'type',
+//            index: 'type',
+//            width: 60,
+//        }, {
+//            name: 'status',
+//            index: 'status',
+//            width: 60,
+//        }
         ],
         viewrecords: true,//是否在浏览导航栏显示记录总数
         rowNum: 10,//每页显示记录数
