@@ -3,12 +3,12 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<link rel="icon" href="${request.contextPath}/static/imgs/favicon.ico" type="image/x-icon"/>
+		<link rel="icon" href="/static/imgs/favicon.ico" type="image/x-icon"/>
 		<title>洗车管理</title>
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 		<#include "/common/top-common.ftl"/>
-		<link rel="stylesheet" href="${basePath}/static/assets/css/login/login.css" />
+		<link rel="stylesheet" href="/static/assets/css/login/login.css" />
 		<script> 
 			if (window != top) 
 			top.location.href = location.href; 
@@ -39,5 +39,5 @@
 		</div>
         <h2></h2>
 	</body>
-    <script src="${basePath}/static/js/login/login.js"></script>
+    <script src="/static/js/login/login.js"></script>
 </html>
