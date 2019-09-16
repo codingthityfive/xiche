@@ -1,0 +1,15 @@
+.bussinessScope{
+	padding: 5px;
+    border: 1px solid #DDD;
+    margin: 5px 0;
+
+}
+.bussinessScope span{
+	background-color: transparent ;
+	margin: 0 6px !important;
+	cursor: pointer
+	
+}
+.trActive{
+	background-color: #99CCCC;
+}

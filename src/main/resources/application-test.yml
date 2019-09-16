@@ -1,0 +1,7 @@
+url:
+  url: www.bb.com
+
+mysql:
+  url: jdbc:mysql://rm-bp116802eans1qf74.mysql.rds.aliyuncs.com:3306/xyy_saas_zhl_test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+  username: wang_zhenyu
+  password: ADEMRzNJD25uKOq9CbmkYWRxLpaxb5

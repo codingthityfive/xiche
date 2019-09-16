@@ -1,0 +1,83 @@
+#innerBody{background: none;}
+.main-content{background: #EBEDF1;padding: 10px;}
+.navbar{background: #383D41;}
+.main-container:before{background: none !important;}
+.publicPanel{position: relative;padding: 10px;margin-bottom: 0;border-radius: 4px;border: none !important;margin: 0 auto 10px;}
+.publicPanel .publicPanelTitle{font-size: 14px;color: #333;position: relative;padding-left: 10px;}
+.publicPanel .publicPanelTitle::before{content:"";background-image: linear-gradient(0deg, #383D41 0%, #94969D 99%);border-radius: 2px;width: 3px;height: 13px;position: absolute;left: 0px;top: 1px;}
+.publicPanel .control-group{padding-bottom: 10px;overflow: hidden;}
+.publicPanel .control-group .col-sm-3,.publicPanel .control-group .col-sm-9{padding: 0;}
+.publicPanel .control-group .control-label{text-align: right;line-height: 34px;padding-right: 5px;}
+.publicPanel .control-group .form-control{width: 100%;}
+.saasTable thead tr{background: #383D41;font-size: 12px;color: rgba(255, 255, 255, 0.75);}
+.saasTable thead tr th{border: none;}
+.saasTableWrap .dataTables_filter{text-align: left;padding: 10px;display: flex;}
+.saasTableWrap .dataTables_filter .tableChoose{padding-left: 10px;position: relative;}
+.saasTableWrap .dataTables_filter .tableChoose .ChooseCheckbox{position: absolute;
+    padding: 20px;
+    background-color: #fff; 
+    width: 400px;
+    border: 1px solid #ececec;
+    top: 33px;
+    box-shadow: 1px 1px 5px #e8e8e8;
+    z-index: 999;display: none;}
+.saasTableWrap .dataTables_filter .tableChoose .ChooseCheckbox:before,.saasTableWrap .dataTables_filter .tableChoose .ChooseCheckbox:after{content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-bottom-color: #ccc;
+    left: 24px;
+    top: -20px;}
+    .saasTableWrap .dataTables_filter .tableChoose .ChooseCheckbox:after {
+      border-bottom-color: #fff;
+      top: -19px; }
+.ChooseCheckbox .checkbox{padding: 10px 20px;}
+.toolbox{padding: 5px;margin: 0 auto 10px;display: block !important;background: #FFFFFF;border-radius: 4px;width: 100%;}
+.input-group-addon{border: none;background: none;}
+.marginTop5{margin-top: 5px;}
+.lineBorder{border-bottom: 1px solid #1c5897;margin-bottom: 20px !important;padding-bottom: 20px;}
+#toolbox, #dictionary_tools{    padding: 5px;
+    margin: 0 auto 10px;
+    display: block !important;
+    background: #FFFFFF;
+    border-radius: 4px;
+    width: 100%;}
+    #toolbox .btn, #dictionary_tools button{margin: 0 5px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
+    color: #666;}
+.ace-nav>li>a{background: none;padding: 0 30px;}
+.ace-nav>li>a:hover,.ace-nav>li>a:focus{background: #2698FA;}
+.ace-nav>li{border-left: 1px solid #2B2F32;}
+#sidebar a{color: #fff;}
+#sidebar a.dropdown-toggle{padding-left: 30px;}
+#sidebar .nav-list>li .submenu>li>a{border: none;}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover, .nav li>a:hover{background: #2698FA;}
+.danger {color: #e02222;}
+.hideSubmit{display: none;}
+input[type="text"],input[type="search"]{border-radius: 4px !important;}
+.input-group-addon:first-child{min-width: 8em;text-align: right;}
+select{width: 100%!important;}
+.btn-primary,.input-group>.btn{border-radius: 5px !important;}
+.btn{padding:3px 12px;margin-right: 5px;}
+.ui-dialog-content{overflow: auto;}
+
+/*分页样式*/
+#page-nav{text-align: center;background: none;}
+ul.pagination>li>span,ul.pagination>li>a,ul.pager>li>span{cursor: pointer;background-color: #fff!important;border: 1px solid #ddd!important;height: 31px;color: #2698FA!important;border-radius: 5px!important;margin-right: 5px;}
+ul.pagination>li.active>a{color: #fff!important;background: #2698FA!important;border-color: #2698FA!important;cursor: pointer;}
+.input-page-div>input{width:5em;height:2.2em;margin:0 0.2em;text-align: center;}
+.input-page-div>.input-btn-xs{background-color: #fff!important;border: 1px solid #ddd!important;height: 31px;color: #272525!important;border-radius: 4px;margin-left: 5px;}
+.input-page-div{display: inline-block;margin-left:1em;}
+.tableChecked tr.active td{background: #99CCCC !important;}
+.ui-common-table thead tr{background: #383D41!important;}
+.ui-jqgrid .ui-jqgrid-htable th div{overflow: visible!important;color: rgba(255, 255, 255, 0.75)!important;font-size: 12px!important;text-align: center;}
+.ui-jqgrid tr.jqgrow td{padding: 12px 2px;}
+th[aria-selected=true]{background-image: none;}
+.Wdate{height: 34px!important;}
+
+
+
+
+
+
