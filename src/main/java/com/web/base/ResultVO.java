@@ -60,4 +60,5 @@ public class ResultVO<T>{
     public void setResult(T result) {
         this.result = result;
     }
+    
 }
