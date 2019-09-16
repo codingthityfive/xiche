@@ -1,6 +1,9 @@
 package com.web.xiche.dao;
 
 import com.web.xiche.po.Project;
+
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -16,4 +19,6 @@ public interface ProjectMapper {
     int updateByPrimaryKeySelective(Project record);
 
     int updateByPrimaryKey(Project record);
+    
+    List<Project> findPage(Project record);
 }
