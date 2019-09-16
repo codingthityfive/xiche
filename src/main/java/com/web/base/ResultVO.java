@@ -61,13 +61,4 @@ public class ResultVO<T>{
         this.result = result;
     }
     
-    private ResultVO(int code,String msg,T result) {
-    	this.code=code;
-    	this.msg=msg;
-    	this.result=result;
-    }
-    
-    public static<T> ResultVO<T> createResult(int code,String msg,T result) {
-    	return new ResultVO<T>(code,msg,result);
-    }
 }
