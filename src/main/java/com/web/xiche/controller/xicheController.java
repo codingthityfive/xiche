@@ -86,7 +86,7 @@ public class xicheController extends AbstractCommonController {
 	}
 	
 	/**
-	 * 跳转到编辑页面
+	 * 项目跳转到编辑页面
 	 *
 	 * @return
 	 */
