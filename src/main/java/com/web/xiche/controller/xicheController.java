@@ -96,6 +96,47 @@ public class xicheController extends AbstractCommonController {
         model.addAttribute("project", project);
 		return "xiche/projectAdd";
 	}
+	
+	
+	/**
+     * 跳入客户流水账界面
+     * @return
+     */
+    @RequestMapping("/toAccountFlowList")
+    public String toAccountFlowList(){
+        return "xiche/accountflowList";
+    }
+    
+    /**
+     * 项目查询
+     * @param rows
+     * @param page
+     * @param project
+     * @return
+     */
+    @RequestMapping("/queryAccountFlow")
+    @ResponseBody
+    public ResultVO<PageInfo<Project>> queryAccountFlow(Integer rows, Integer page, Project project){
+        logger.info("aa");
+        if(page==null){
+            page=1;
+        }
+        if(rows==null){
+            rows=10;
+        }
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageSize(rows);
+        pageInfo.setPageNum(page);
+        return ResultVO.createSuccess(xicheService.findPageInfo(pageInfo,project));
+    }
+    /**
+     * 跳入客户流水账新增界面
+     * @return
+     */
+    @RequestMapping("/toAccountFlowAdd")
+    public String toAccountFlowAdd(){
+        return "xiche/accountflowAdd";
+    }
 //
 //    @RequestMapping("/toUpdate")
 //    public String toUpdate(User user){
