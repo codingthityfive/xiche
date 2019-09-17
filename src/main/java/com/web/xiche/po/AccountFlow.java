@@ -3,83 +3,84 @@ package com.web.xiche.po;
 import java.util.Date;
 
 public class AccountFlow {
-    private Long id;
+    private Integer id;
 
-    private Long customerid;
+    private Integer customerid;
 
-    private Long projectid;
+    private Integer projectid;
 
-    private Boolean type;
+    private Integer type;
 
-    private Boolean status;
+    private Integer status;
 
     private Date createtime;
 
-    private String mobile;
+    private Double balance;
 
-    private String userName;
+    private String projectName;
+    
+	public Integer getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public Long getCustomerid() {
-        return customerid;
-    }
+	public Integer getCustomerid() {
+		return customerid;
+	}
 
-    public void setCustomerid(Long customerid) {
-        this.customerid = customerid;
-    }
+	public void setCustomerid(Integer customerid) {
+		this.customerid = customerid;
+	}
 
-    public Long getProjectid() {
-        return projectid;
-    }
+	public Integer getProjectid() {
+		return projectid;
+	}
 
-    public void setProjectid(Long projectid) {
-        this.projectid = projectid;
-    }
+	public void setProjectid(Integer projectid) {
+		this.projectid = projectid;
+	}
 
-    public Boolean getType() {
-        return type;
-    }
+	public Integer getType() {
+		return type;
+	}
 
-    public void setType(Boolean type) {
-        this.type = type;
-    }
+	public void setType(Integer type) {
+		this.type = type;
+	}
 
-    public Boolean getStatus() {
-        return status;
-    }
+	public Integer getStatus() {
+		return status;
+	}
 
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public Date getCreatetime() {
+		return createtime;
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
 
-    public String getMobile() {
-        return mobile;
-    }
+	public Double getBalance() {
+		return balance;
+	}
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public String getProjectName() {
+		return projectName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
 }

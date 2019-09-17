@@ -21,4 +21,6 @@ public interface ProjectMapper {
     int updateByPrimaryKey(Project record);
     
     List<Project> findPage(Project record);
+    
+    List<Project> findAll();
 }

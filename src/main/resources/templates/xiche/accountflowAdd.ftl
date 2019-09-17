@@ -23,16 +23,31 @@
 					<div class="form-group">
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
-								<label class="input-group-addon"><span class="danger">*</span>客户</label>
-								<input type="text" name="customerId" class="form-control" required="required" value="${(accountFlow.customerId)!}" data-msg-required='该字段为必填项'>
+								<label class="input-group-addon"><span class="danger">*</span>项目</label>
+								
+								<#if accountFlow?? && accountFlow!="" && accountFlow.id??>
+									<select id="projectid" name="projectid" class="form-control" > 
+										<option value="">请选择项目</option>
+										<#list projectList as project>
+								         	<option value="${project.id}" <#if accountFlow.projectid==project.id>selected</#if>>${project.name}</option>
+							         	</#list>
+									</select> 
+								<#else>
+									<select id="projectid" name="projectid" class="form-control" > 
+									<option value="">请选择项目</option>
+									<#list projectList as project>
+							         	<option value="${project.id}">${project.name}</option>
+						         	</#list>
+								</select> 
+								</#if>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
-								<label class="input-group-addon"><span class="danger">*</span>项目</label>
-								<input type="text" name="projectId" class="form-control" required="required" value="${(accountFlow.projectId)!}" data-msg-required='该字段为必填项'>
+								<label class="input-group-addon"><span class="danger">*</span>客户</label>
+								<input type="text" name="customerid" class="form-control" required="required" value="${(accountFlow.customerid)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -40,7 +55,11 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>扣款类型</label>
-								<input type="text" name="type" class="form-control" required="required" value="${(accountFlow.type)!}" data-msg-required='该字段为必填项'>
+								<select id="type" name="type" class="form-control"> 
+							       	<option value="0">现金</option>
+							       	<option value="1">积分</option>
+							       	<option value="2">余额</option>
+								</select> 
 							</div>
 						</div>
 					</div>
@@ -48,7 +67,7 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>价格</label>
-								<input type="text" name="balance" class="form-control" required="required" value="${(accountFlow.balance)!}" data-msg-required='该字段为必填项'>
+								<input type="text" id= "balance" name="balance" class="form-control" required="required" value="${(accountFlow.balance)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>

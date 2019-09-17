@@ -1,11 +1,9 @@
 package com.web.xiche.controller;
 
-import com.github.pagehelper.PageInfo;
-import com.web.base.AbstractCommonController;
-import com.web.base.ResultVO;
-import com.web.xiche.po.Project;
-import com.web.xiche.service.XicheService;
-import org.apache.catalina.LifecycleState;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import com.github.pagehelper.PageInfo;
+import com.web.base.AbstractCommonController;
+import com.web.base.ResultVO;
+import com.web.xiche.po.AccountFlow;
+import com.web.xiche.po.Project;
+import com.web.xiche.service.XicheService;
 
 /**
  * Created by wangzhenyu on 2018/4/2.
@@ -33,14 +35,6 @@ public class xicheController extends AbstractCommonController {
     @RequestMapping("/toProjectList")
     public String toList(){
         return "xiche/projectList";
-    }
-    /**
-     * 跳入项目界面
-     * @return
-     */
-    @RequestMapping("/toAccountFlow")
-    public String toAccountList(){
-        return "xiche/accountFlowList";
     }
     /**
      * 项目查询
@@ -65,16 +59,6 @@ public class xicheController extends AbstractCommonController {
         return ResultVO.createSuccess(xicheService.findPageInfo(pageInfo,project));
     }
 
-    @RequestMapping("/toProjectAdd")
-    public String toAdd(){
-        return "xiche/projectAdd";
-    }
-
-	@RequestMapping("/toAccFlowAdd")
-	public String toAccFlowAdd(Model model){
-		List<Project> projects=xicheService.
-		return "xiche/accFlowAdd";
-	}
     /**
 	 * 项目编辑保存
 	 * @return
@@ -119,9 +103,17 @@ public class xicheController extends AbstractCommonController {
     public String toAccountFlowList(){
         return "xiche/accountflowList";
     }
-    
     /**
-     * 项目查询
+     * 查询单条项目数据
+     */
+    @RequestMapping("/getOneProjectById")
+    @ResponseBody
+    public ResultVO<Project> getOneProjectById(Integer id){
+    	Project project = xicheService.findProjectById(id);
+    	return ResultVO.createSuccess(project);
+    }
+    /**
+     * 客户流水账查询
      * @param rows
      * @param page
      * @param project
@@ -129,7 +121,7 @@ public class xicheController extends AbstractCommonController {
      */
     @RequestMapping("/queryAccountFlow")
     @ResponseBody
-    public ResultVO<PageInfo<Project>> queryAccountFlow(Integer rows, Integer page, Project project){
+    public ResultVO<PageInfo<AccountFlow>> queryAccountFlow(Integer rows, Integer page, AccountFlow accountFlow){
         logger.info("aa");
         if(page==null){
             page=1;
@@ -140,16 +132,55 @@ public class xicheController extends AbstractCommonController {
         PageInfo pageInfo = new PageInfo();
         pageInfo.setPageSize(rows);
         pageInfo.setPageNum(page);
-        return ResultVO.createSuccess(xicheService.findPageInfo(pageInfo,project));
+        return ResultVO.createSuccess(xicheService.findAccountFlowPageInfo(pageInfo,accountFlow));
     }
     /**
      * 跳入客户流水账新增界面
      * @return
      */
     @RequestMapping("/toAccountFlowAdd")
-    public String toAccountFlowAdd(){
+    public String toAccountFlowAdd(Model model){
+    	List<Project> projectList = xicheService.findAll();
+    	model.addAttribute("projectList", projectList);
         return "xiche/accountflowAdd";
     }
+    
+    /**
+	 * 客户流水编辑保存
+	 * @return
+	 */
+	@RequestMapping(value = "/saveOrUpdateAccountFlow")
+	@ResponseBody
+	public ResultVO<AccountFlow> saveOrUpdateAccountFlow(AccountFlow accountFlow) {
+		logger.info("11");
+		Integer id = accountFlow.getId();
+		try {
+			if(id == null){
+				xicheService.saveOrUpdateAccountFlow(accountFlow);
+			}else {
+				xicheService.saveOrUpdateAccountFlow(accountFlow);
+			}
+		} catch (IllegalArgumentException e) {
+			return ResultVO.createResult(2, e.getMessage(), accountFlow);
+		} catch (Exception e) {
+			return ResultVO.createResult(3, e.getMessage(), accountFlow);
+		}
+		return ResultVO.createSuccess(accountFlow);
+	}
+	
+	/**
+	 * 项目跳转到编辑页面
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/toUpdateAccountFlow")
+	public String toUpdateAccountFlow(HttpServletRequest request, Model model, Integer id) {
+		AccountFlow accountFlow = xicheService.findAccountFlowById(id);
+        model.addAttribute("accountFlow", accountFlow);
+        List<Project> projectList = xicheService.findAll();
+    	model.addAttribute("projectList", projectList);
+		return "xiche/accountflowAdd";
+	}
 //
 //    @RequestMapping("/toUpdate")
 //    public String toUpdate(User user){
