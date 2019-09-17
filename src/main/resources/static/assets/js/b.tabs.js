@@ -13,6 +13,7 @@
  *              解决IE下关闭标签页后切换其它标签页不能获得焦点问题
  *  
  */
+var initData;
 !function ($) {
 	"use strict";
 	
@@ -103,6 +104,7 @@
 				return;
 			}
 		}else openTabs = new Array();
+		title='<span class="title">'+title+'</span>'
 		$('ul.nav-tabs',$tabs).append('<li><a href="#'+tabId+'" data-toggle="tab">'+title+c.closeBtnTemplate+'</a></li>');
 		var content = $('<div class="tab-pane" id="'+tabId+'"></div>');
 		$('div.tab-content',$tabs).append(content);
@@ -112,6 +114,8 @@
 
 		var openIframe = function(){
 			$(content).append('<iframe frameborder="0" scrolling="yes" style="width:100%;height:100%;border:0px;" src="'+url+'"></iframe>');
+			$(content).find('iframe').prop('src',url);
+
 		};
 		//进行登录验证
 		if(loginCheck && $.isFunction(loginCheck)){
@@ -123,9 +127,20 @@
 	 * 关闭tab
 	 * @param id
 	 */
-	bTabs.prototype.closeTab = function(id){
+	bTabs.prototype.closeTab = function(id,param){
 		var c = constants, $tabs = this.$container, openTabs = this.openTabs;
 		var thisTab = $('#' + id);
+		// alert(id)
+		if(id=="bTabs_tab40"){
+            if(!confirm("是否关闭页面？")){
+                return false;
+            }
+        }
+        if(id=="bTabs_tab43"){
+            if(!confirm("是否关闭页面？")){
+                return false;
+            }
+        }
 		//在移除标签页之前，先把iframe移除，解决在IE下，窗口上的输入控件获得不了焦点的问题
 		if($('iframe',$(thisTab)).size() > 0) $('iframe',$(thisTab)).remove();
 		//移除内容区
@@ -148,6 +163,15 @@
 		}
 		//激活被关闭Tab邻的Tab，若没有则不处理
 		if(prevLi.size() > 0 ) $('a',$(prevLi)).tab('show');
+		
+		
+		//关闭刷新页面
+		if(param){
+			if(param.reload){
+				// 重新加载当前iframe
+				document.querySelector('#mainFrameTabs .tab-content .tab-pane.active iframe').contentWindow.location.reload();
+			}
+		}
 	};
 	
 	/**
@@ -159,29 +183,37 @@
 			var $this = $(this),
 				data = $this.data('bTabs'),
 				params = $.extend({}, defaults, $this.data(), typeof p == 'object' && p);
-			if(!data) $this.data('bTabs', (data = new bTabs(this,params)));
+			initData = new bTabs(this,params);
+			if(!data) $this.data('bTabs', (data = initData));
 			data.init();
 		});
 	}
-	
+
+
 	/**
 	 * 新增标签页
 	 */
-	function bTabsAdd(id,title,url,loginCheck){
+	function bTabsAdd(id,title,url,inda,loginCheck){
 		return this.each(function(){
 			if(!id || !title || !url) return;
+			if(inda){
+                inda.addTab(id,title,url,loginCheck);
+                return;
+			}
 			var $this = $(this),data = $this.data('bTabs');
 			if(data) data.addTab(id,title,url,loginCheck);
 		});
 	}
+
+
 	/**
 	 * 关闭标签页
 	 */
-	function bTabsClose(id){
+	function bTabsClose(id,param){
 		return this.each(function(){
-			if(!id || !title || !url) return;
+			//if(!id || !title || !url) return;
 			var $this = $(this),data = $this.data('bTabs');
-			if(data) data.closeTab(id);
+			if(data) data.closeTab(id,param);
 		});
 	}
 	

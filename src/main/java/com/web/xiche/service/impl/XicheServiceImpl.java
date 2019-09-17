@@ -38,5 +38,11 @@ public class XicheServiceImpl implements XicheService {
 	public Project findProjectById(int id) {
 		return projectMapper.selectByPrimaryKey(id);
 	}
+//	@Override
+//	public List<Project> findProjects() {
+//		Project project=new Project();
+//		project.setStatus(1);
+//		return projectMapper.findPage(project);
+//	}
 	
 }

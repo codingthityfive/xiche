@@ -1,7 +1,11 @@
 package com.web.xiche.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.github.pagehelper.PageInfo;
+import com.web.base.AbstractCommonController;
+import com.web.base.ResultVO;
+import com.web.xiche.po.Project;
+import com.web.xiche.service.XicheService;
+import org.apache.catalina.LifecycleState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.pagehelper.PageInfo;
-import com.web.base.AbstractCommonController;
-import com.web.base.ResultVO;
-import com.web.xiche.po.Project;
-import com.web.xiche.service.XicheService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by wangzhenyu on 2018/4/2.
@@ -32,6 +33,14 @@ public class xicheController extends AbstractCommonController {
     @RequestMapping("/toProjectList")
     public String toList(){
         return "xiche/projectList";
+    }
+    /**
+     * 跳入项目界面
+     * @return
+     */
+    @RequestMapping("/toAccountFlow")
+    public String toAccountList(){
+        return "xiche/accountFlowList";
     }
     /**
      * 项目查询
@@ -60,8 +69,12 @@ public class xicheController extends AbstractCommonController {
     public String toAdd(){
         return "xiche/projectAdd";
     }
-    
-    
+
+	@RequestMapping("/toAccFlowAdd")
+	public String toAccFlowAdd(Model model){
+		List<Project> projects=xicheService.
+		return "xiche/accFlowAdd";
+	}
     /**
 	 * 项目编辑保存
 	 * @return
