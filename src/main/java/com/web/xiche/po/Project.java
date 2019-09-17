@@ -13,7 +13,7 @@ public class Project {
 
     private Byte type;
 
-    private Boolean status;
+    private Integer status;
 
     private Date createtime;
 
@@ -57,11 +57,11 @@ public class Project {
         this.type = type;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

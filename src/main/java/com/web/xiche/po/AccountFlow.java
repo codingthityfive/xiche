@@ -15,6 +15,10 @@ public class AccountFlow {
 
     private Date createtime;
 
+    private String mobile;
+
+    private String userName;
+
     public Long getId() {
         return id;
     }
@@ -61,5 +65,21 @@ public class AccountFlow {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

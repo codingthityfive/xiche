@@ -7,7 +7,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="point" property="point" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="TINYINT" />
-    <result column="status" property="status" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -120,6 +120,9 @@
     <include refid="Base_Column_List" />
     from project
     where 1 = 1
+     <if test="status != null" >
+       and status = #{status}
+     </if>
     <if test="name != null" >
     	and name = #{name}
     </if>
