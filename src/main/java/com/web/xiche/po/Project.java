@@ -11,11 +11,21 @@ public class Project {
 
     private Integer point;
 
-    private Byte type;
+    private Integer type;
+
+    private String typeName;
 
     private Integer status;
 
     private Date createtime;
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 
     public Integer getId() {
         return id;
@@ -49,11 +59,11 @@ public class Project {
         this.point = point;
     }
 
-    public Byte getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(Byte type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 

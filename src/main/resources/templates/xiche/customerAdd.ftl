@@ -19,20 +19,20 @@
 		<div class="panel panel-default">
 			<div class="container">
 				<form id="saveForm" class="validate"  >
-					<input id="id" name="id" value="${(project.id)!}"   type="hidden">
+					<input id="id" name="id" value="${(cus.id)!}"   type="hidden">
 					<div class="form-group">
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
-								<label class="input-group-addon"><span class="danger">*</span>项目名称</label>
-								<input type="text" name="name" class="form-control" required="required" value="${(project.name)!}" data-msg-required='该字段为必填项'>
+								<label class="input-group-addon"><span class="danger">*</span>客户名称</label>
+								<input type="text" name="username" class="form-control" required="required" value="${(cus.name)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
-								<label class="input-group-addon"><span class="danger">*</span>价格</label>
-								<input type="text" name="price" class="form-control" required="required" value="${(project.price)!}" data-msg-required='该字段为必填项'>
+								<label class="input-group-addon"><span class="danger">*</span>手机号</label>
+								<input type="text" name="mobile" class="form-control" required="required" value="${(cus.price)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -40,15 +40,15 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>积分</label>
-								<input type="text" name="point" class="form-control" required="required" value="${(project.point)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="points" class="form-control" required="required" value="${(cus.point)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
-								<label class="input-group-addon"><span class="danger">*</span>类型</label>
-								<input type="text" name="typeName" class="form-control" required="required" value="${(project.typeName)!}" data-msg-required='该字段为必填项'>
+								<label class="input-group-addon"><span class="danger">*</span>余额</label>
+								<input type="text" name="balance" class="form-control" required="required" value="${(cus.balance)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -59,5 +59,5 @@
 		    <button id="formSubmit" class="btn btn-white btn-default btn-round"><i class="glyphicon glyphicon-floppy-saved"></i>提交</button>
 		</div>
 	</body>
-    <script src="/static/js/xiche/projectAdd.js"></script>
+    <script src="/static/js/xiche/customerAdd.js"></script>
 </html>

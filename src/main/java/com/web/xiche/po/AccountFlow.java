@@ -17,9 +17,19 @@ public class AccountFlow {
 
     private Double balance;
 
+    private String carNumber;
+
     private String projectName;
-    
-	public Integer getId() {
+
+    public String getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 

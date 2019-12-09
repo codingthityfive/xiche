@@ -10,13 +10,14 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="balance" property="balance" jdbcType="DOUBLE" />
     <result column="projectName" property="projectName" jdbcType="VARCHAR" />
+      <result column="carNumber" property="carNumber" jdbcType="VARCHAR"/>
     
   </resultMap>
   <insert id="insert" parameterType="com.web.xiche.po.AccountFlow" >
     insert into accountflow (id, customerId, projectId, 
-      type, status, createTime)
+      type, status, createTime,carNumber)
     values (#{id,jdbcType=BIGINT}, #{customerid,jdbcType=BIGINT}, #{projectid,jdbcType=BIGINT}, 
-      #{type,jdbcType=BIT}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP})
+      #{type,jdbcType=BIT}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP},#{catNumber,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.web.xiche.po.AccountFlow" >
     insert into accountflow
@@ -42,6 +43,9 @@
       <if test="balance != null" >
         balance,
       </if>
+        <if test="carNumber != null" >
+            carNumber
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -65,6 +69,9 @@
       <if test="balance != null" >
         #{balance},
       </if>
+    <if test="carNumber != null" >
+        #{carNumber}
+    </if>
     </trim>
   </insert>
   
@@ -103,12 +110,16 @@
      o.type,
      o.status,
      o.createTime,
+     o.carNumber,
      (select a.name from project a where a.id = o.projectId) as projectName 
     from accountflow o 
     where 1 = 1
      <if test="customerid != null" >
        and o.customerId = #{customerid}
      </if>
+       <if test="carNumber != null" >
+           and o.carNumber = #{carNumber}
+       </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

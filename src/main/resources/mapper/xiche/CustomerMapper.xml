@@ -24,6 +24,16 @@
     from customer
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="findPage" resultMap="BaseResultMap"  >
+        select
+        <include refid="Base_Column_List" />
+        from customer
+        <!--where 1=1-->
+        <!--<if test="customer != null" >-->
+            <!--and id = #{customer.id}-->
+        <!--</if>-->
+    </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from customer
     where id = #{id,jdbcType=INTEGER}

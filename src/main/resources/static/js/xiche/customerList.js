@@ -5,7 +5,7 @@ function showColumnDialog() { $("#grid-table").jqGrid('setColumns', { modal: tru
 $(document).ready(function () {
     var lastsel;
     $("#grid-table").jqGrid({
-        url: "queryProject",
+        url: "queryCustomer",
         jsonReader : {
             root:"result.list",
             page: "result.pageNum",
@@ -16,7 +16,7 @@ $(document).ready(function () {
         datatype: "json", //数据来源，本地数据（local，json,jsonp,xml等）
         height: "auto",//高度，表格高度。可为数值、百分比或'auto'
         //mtype:"GET",//提交方式
-        colNames: ['序号','项目名称','类型', '价格','积分'],
+        colNames: ['序号','客户名称','手机号码', '余额','积分'],
         colModel: [{
             name: 'id',
             index: 'id',//索引。其和后台交互的参数为sidx
@@ -27,30 +27,28 @@ $(document).ready(function () {
                 size: "20",
                 maxlength: "30"
             }
-        }, {
-            name: 'name',
-            index: 'name',
+        },{
+            name: 'username',
+            index: 'username',
             width: 100,//宽度
-            editable: false,//是否可编辑
-            edittype: "select",//可以编辑的类型。可选值：text, textarea, select, checkbox, password, button, image and file.s
-            editoptions: {
-                value: "1:采购入库;2:退用入库"
-            }
         }, {
-            name: 'typeName',
-            index: 'typeName',
+            name: 'mobile',
+            index: 'mobile',
+            width: 100,//宽度
+        }, {
+            name: 'balance',
+            index: 'balance',
             width: 60,
         }, {
-            name: 'price',
-            index: 'price',
-            width: 60,
-        }, {
-            name: 'point',
-            index: 'point',
+            name: 'points',
+            index: 'points',
             width: 60,
         }
-
-            // {
+//        , {
+//            name: 'type',
+//            index: 'type',
+//            width: 60,
+//        }, {
 //            name: 'status',
 //            index: 'status',
 //            width: 60,
@@ -72,15 +70,13 @@ $(document).ready(function () {
      * @returns {boolean}
      */
       $("#toEdit").click(function() {
-          alert("toedit")
           var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
-          alert();
           if(id == null || id == ''){
-             alert("请选择要修改的项目！");
+             alert("请选择要修改的客户！");
               return;
           }
            top.dialog({
-               url: '/xiche/toUpdateProject?id='+id,
+               url: '/xiche/toUpdateCustomer?id='+id,
                title: '编辑项目',
                width:500,
                height:300,
@@ -111,7 +107,7 @@ $(document).ready(function () {
     	console.info("1111");
         var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
         top.dialog({
-            url: '/xiche/toUpdateProject',
+            url: '/xiche/toCustomerAdd',
             title: '新增项目',
             width:500,
             height:300,

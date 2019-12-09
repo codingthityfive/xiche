@@ -20,9 +20,14 @@
 			<form class="row form-inline">
 				<div class="col-sm-3 marginTop5">
 					<div class="input-group">
-						<label class="input-group-addon">客户</label>
-						<input type="text" id="customerid" class="form-control">
+						<label class="input-group-addon">项目名称</label>
+						<input type="text" id="name" class="form-control">
+
 					</div>
+                    <div class="input-group">
+                        <label class="input-group-addon">车牌号</label>
+                        <input type="text" id="carNumber" class="form-control">
+                    </div>
 				</div>
 				
 				<div class="col-sm-3 marginTop5">

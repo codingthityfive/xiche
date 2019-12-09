@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.web.xiche.po.AccountFlow;
+import com.web.xiche.po.Customer;
 import com.web.xiche.po.Project;
 
 public interface XicheService {
@@ -30,6 +31,8 @@ public interface XicheService {
 	 * 查询所有可用项目
 	 */
 	List<Project> findAll();
+
+    PageInfo<Customer> findPageCus(PageInfo<Customer> pageInfo, Customer customer);
 	
 	/**
      * 客户流水查询
@@ -48,4 +51,8 @@ public interface XicheService {
      * @return
      */
     AccountFlow findAccountFlowById(int id);
+
+    Customer findCustomerById(int id);
+
+    int saveOrUpdateCustomer(Customer customer);
 }

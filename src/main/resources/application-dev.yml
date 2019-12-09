@@ -2,6 +2,6 @@ url:
   url: www.aa.com
 
 mysql:
-  url: jdbc:mysql://192.168.163.68:3306/xiche?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+  url: jdbc:mysql://111.229.45.152:3306/xiche?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
   username: root
-  password: 1111
+  password: Root2019..

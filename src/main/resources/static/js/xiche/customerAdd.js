@@ -37,15 +37,14 @@ $(function() {
 //        }
 //
 
-        $.post("/xiche/saveOrUpdateProject", $("#saveForm").serialize(), function(result) {
+        $.post("/xiche/saveOrUpdateCustomer", $("#saveForm").serialize(), function(result) {
             if (result) {
                 if(result.code == 0){
-                    btn_alertDialog("提示","保存成功");
-                    dialog.close();
+                    alert("保存成功！");
+                    dialog.close("success");
                     dialog.remove();
                 }else{
                     btn_alertDialog("提示",result.msg);
-
                 }
             }
         });

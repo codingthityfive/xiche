@@ -16,7 +16,7 @@ $(document).ready(function () {
         datatype: "json", //数据来源，本地数据（local，json,jsonp,xml等）
         height: "auto",//高度，表格高度。可为数值、百分比或'auto'
         //mtype:"GET",//提交方式
-        colNames: ['序号','项目', '客户','价格'],
+        colNames: ['序号','项目','车牌号', '客户','价格'],
         colModel: [{
             name: 'id',
             index: 'id',//索引。其和后台交互的参数为sidx
@@ -36,6 +36,10 @@ $(document).ready(function () {
 //            editoptions: {
 //                value: "1:采购入库;2:退用入库"
 //            }
+        },{
+            name: 'carNumber',
+            index: 'carNumber',
+            width: 60,
         }, {
             name: 'customerid',
             index: 'customerid',
@@ -97,6 +101,7 @@ $(document).ready(function () {
  * @returns {boolean}
  */
   $("#toEdit").click(function() {
+      alert("toedit");
       var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
       if(id == null || id == ''){
          alert("请选择要修改的客户流水！");

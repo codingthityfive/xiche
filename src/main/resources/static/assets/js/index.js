@@ -490,4 +490,11 @@ function callAjax(url,object) {
         }
     });
     return result;
-};
+}
+function reload(){
+    $("#grid-table").jqGrid('setGridParam', {
+        postData: {
+
+        },page:1
+    }).trigger('reloadGrid');
+}

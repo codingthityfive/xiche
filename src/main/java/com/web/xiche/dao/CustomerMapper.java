@@ -2,6 +2,9 @@ package com.web.xiche.dao;
 
 import com.web.xiche.po.Customer;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface CustomerMapper {
@@ -12,6 +15,8 @@ public interface CustomerMapper {
     int insertSelective(Customer record);
 
     Customer selectByPrimaryKey(Integer id);
+
+    List<Customer> findPage(@Param("customer") Customer customer);
 
     int updateByPrimaryKeySelective(Customer record);
 

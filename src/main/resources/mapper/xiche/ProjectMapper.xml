@@ -7,11 +7,12 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="point" property="point" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="TINYINT" />
+      <result column="typeName" property="typeName" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, price, name, point, type, status, createTime
+    id, price, name, point, type, typeName, status, createTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,10 +26,10 @@
   </delete>
   <insert id="insert" parameterType="com.web.xiche.po.Project" >
     insert into project (id, price, name, 
-      point, type, status, createTime
+      point, type, typeName, status, createTime
       )
     values (#{id,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{name,jdbcType=VARCHAR}, 
-      #{point,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP}
+      #{point,jdbcType=INTEGER}, #{type,jdbcType=TINYINT},#{typeName,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.web.xiche.po.Project" >
@@ -49,6 +50,9 @@
       <if test="type != null" >
         type,
       </if>
+        <if test="typeName != null" >
+            typeName,
+        </if>
       <if test="status != null" >
         status,
       </if>
@@ -72,6 +76,9 @@
       <if test="type != null" >
         #{type,jdbcType=TINYINT},
       </if>
+        <if test="typeName != null" >
+            #{typeName,jdbcType=VARCHAR},
+        </if>
       <if test="status != null" >
         #{status,jdbcType=BIT},
       </if>

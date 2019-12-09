@@ -68,17 +68,21 @@
                                     <b class="arrow"></b>
 										<ul class="submenu">
 
-													<li mid="tab11" id="messageCenter" data-href="/">
+													<li mid="tab11" id="messageCenter" data-href="/xiche/toProjectList">
                                                         <a class="btabs" tabindex="-1" href="javascript:void(0);">
 															服务项目管理
                                                         </a>
                                                     </li>
-                                            <li mid="tab12" id="messageCenter" data-href="">
+                                            <li mid="tab13" id="messageCenter" data-href="/xiche/toAccountFlowList">
                                                 <a class="btabs" tabindex="-1" href="javascript:void(0);">
                                                     服务项目结算
                                                 </a>
                                             </li>
-
+                                            <li mid="tab12" id="messageCenter" data-href="/xiche/toCustomerList">
+                                                <a class="btabs" tabindex="-1" href="javascript:void(0);">
+                                                    用户管理
+                                                </a>
+                                            </li>
                                         </ul>
                                 </li>
                         </ul>
