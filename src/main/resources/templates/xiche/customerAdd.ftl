@@ -24,7 +24,7 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>客户名称</label>
-								<input type="text" name="username" class="form-control" required="required" value="${(cus.name)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="username" class="form-control" required="required" value="${(cus.username)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -32,7 +32,7 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>手机号</label>
-								<input type="text" name="mobile" class="form-control" required="required" value="${(cus.price)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="mobile" class="form-control" required="required" value="${(cus.mobile)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>积分</label>
-								<input type="text" name="points" class="form-control" required="required" value="${(cus.point)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="points" class="form-control" required="required" value="${(cus.points)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>

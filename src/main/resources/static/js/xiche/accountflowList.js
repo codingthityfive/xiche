@@ -101,7 +101,6 @@ $(document).ready(function () {
  * @returns {boolean}
  */
   $("#toEdit").click(function() {
-      alert("toedit");
       var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
       if(id == null || id == ''){
          alert("请选择要修改的客户流水！");
@@ -127,7 +126,8 @@ $(document).ready(function () {
 $("#queryBtn").click(function(){
     $("#grid-table").jqGrid('setGridParam', {
         postData: {
-//            "name": $("#name").val()//标签名
+           "name": $("#name").val(),//
+            "carNumber": $("#carNumber").val()
         },page:1
     }).trigger('reloadGrid');
 });

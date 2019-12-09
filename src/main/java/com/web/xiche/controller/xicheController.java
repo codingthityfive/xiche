@@ -104,7 +104,7 @@ public class xicheController extends AbstractCommonController {
      */
     @RequestMapping("/toAccountFlowList")
     public String toAccountFlowList(){
-        return "xiche/accountFlowList";
+        return "xiche/accountflowList";
     }
     /**
      * 查询单条项目数据

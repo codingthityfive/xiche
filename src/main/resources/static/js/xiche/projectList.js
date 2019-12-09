@@ -32,10 +32,10 @@ $(document).ready(function () {
             index: 'name',
             width: 100,//宽度
             editable: false,//是否可编辑
-            edittype: "select",//可以编辑的类型。可选值：text, textarea, select, checkbox, password, button, image and file.s
-            editoptions: {
-                value: "1:采购入库;2:退用入库"
-            }
+            // edittype: "select",//可以编辑的类型。可选值：text, textarea, select, checkbox, password, button, image and file.s
+            // editoptions: {
+            //     value: "1:采购入库;2:退用入库"
+            // }
         }, {
             name: 'typeName',
             index: 'typeName',
@@ -66,53 +66,17 @@ $(document).ready(function () {
         multiboxonly: true,//是否只能点击复选框多选
         autowidth: true//自动宽
     });
-    /**
-     * 编辑
-     * @param id
-     * @returns {boolean}
-     */
-      $("#toEdit").click(function() {
-          alert("toedit")
-          var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
-          alert();
-          if(id == null || id == ''){
-             alert("请选择要修改的项目！");
-              return;
-          }
-           top.dialog({
-               url: '/xiche/toUpdateProject?id='+id,
-               title: '编辑项目',
-               width:500,
-               height:300,
-               data: 'val值', // 给modal 要传递的 的数据
-               onclose: function() {
-                   reload();
-               },
-               oniframeload: function() {
-                   //console.log('iframe ready')
-               }
-           })
-               .showModal();
-           return false;
-       });
 
-    $("#queryBtn").click(function(){
-        $("#grid-table").jqGrid('setGridParam', {
-            postData: {
-                "name": $("#name").val()//标签名
-            },page:1
-        }).trigger('reloadGrid');
-    });
 
     /**
      * 新增
      */
     $("#toAdd").click(function() {
-    	console.info("1111");
+        console.info("1111");
         var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
         top.dialog({
             url: '/xiche/toUpdateProject',
-            title: '新增项目',
+            title: '新增客户流水',
             width:500,
             height:300,
             data: 'val值', // 给modal 要传递的 的数据
@@ -127,4 +91,39 @@ $(document).ready(function () {
         return false;
     });
 
+});
+/**
+ * 编辑
+ * @param id
+ * @returns {boolean}
+ */
+$("#toEdit").click(function() {
+    var id = $("#grid-table").jqGrid('getGridParam', 'selrow');
+    if(id == null || id == ''){
+        alert("请选择要修改的项目！");
+        return;
+    }
+    top.dialog({
+        url: '/xiche/toUpdateProject?id='+id,
+        title: '编辑项目',
+        width:500,
+        height:300,
+        data: 'val值', // 给modal 要传递的 的数据
+        onclose: function() {
+            reload();
+        },
+        oniframeload: function() {
+            //console.log('iframe ready')
+        }
+    })
+        .showModal();
+    return false;
+});
+
+$("#queryBtn").click(function(){
+    $("#grid-table").jqGrid('setGridParam', {
+        postData: {
+//            "name": $("#name").val()//标签名
+        },page:1
+    }).trigger('reloadGrid');
 });
