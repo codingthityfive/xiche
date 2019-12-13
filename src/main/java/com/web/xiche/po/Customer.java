@@ -23,7 +23,17 @@ public class Customer {
 
     private Integer points;
 
-    private Double balance;
+    private Integer balance;
+
+    private Integer card;
+
+    public Integer getCard() {
+        return card;
+    }
+
+    public void setCard(Integer card) {
+        this.card = card;
+    }
 
     public Integer getId() {
         return id;
@@ -105,11 +115,11 @@ public class Customer {
         this.points = points;
     }
 
-    public Double getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Integer balance) {
         this.balance = balance;
     }
 }

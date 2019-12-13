@@ -44,7 +44,8 @@ spring:
     charset: utf-8
     content-type: text/html
     enabled: true
+    number_format:
   mvc:
     static-path-pattern: /static/**
   profiles:
-    active: dev
+    active: test

@@ -19,24 +19,31 @@
 			<h4 class="publicPanelTitle">查询面板</h4>
 			<form class="row form-inline">
 				<div class="col-sm-3 marginTop5">
-					<div class="input-group">
-						<label class="input-group-addon">项目名称</label>
-						<input type="text" id="name" class="form-control">
-
-					</div>
                     <div class="input-group">
                         <label class="input-group-addon">车牌号</label>
                         <input type="text" id="carNumber" class="form-control">
                     </div>
 				</div>
-				
-				<div class="col-sm-3 marginTop5">
-					<div class="input-group">
-						<button id="queryBtn" type="button" class="btn btn-primary"><i class="ace-icon fa fa-search nav-search-icon"></i>查询</button>
-					</div>
-				</div>
 
-			</form>
+                <div class="marginTop5">
+                    <div class="col-sm-3 input-group">
+                        <label class="input-group-addon">日期范围</label>
+                        <input type="text" name="start" readonly id="startDate" class="Wdate form-control"  onclick="WdatePicker({skin:'whyGreen',minDate: '%y-01-01', maxDate: '%y-12-31' })" data-init="${(productFlow.startDate)!}" value="${(productFlow.startDate)!}">
+                    </div>
+
+                    <div class="col-sm-3 input-group">
+                        <label class="input-group-addon center">-</label>
+                        <input type="text" name="end" readonly id="endDate" class="Wdate form-control" onclick="WdatePicker({skin:'whyGreen',minDate: '%y-01-01', maxDate: '%y-12-31' })"  data-init="${(productFlow.endDate)!}"  value="${(productFlow.endDate)!}">
+                    </div>
+                </div>
+                <div class="marginTop5">
+                    <div class="col-sm-3 input-group" style="text-align: right;">
+                        <div class="btn btn-primary" id="queryBtn"><i class="ace-icon fa fa-search nav-search-icon" ></i>查询</div>
+<#--                        <div class="btn btn-warning" id="resetBtn"><i class="ace-icon glyphicon glyphicon-refresh" ></i>重置</div>-->
+                    </div>
+                </div>
+
+            </form>
 		</div>
 		<div class="panel panel-default publicPanel">
 			<h4 class="publicPanelTitle">查询展示面板</h4>

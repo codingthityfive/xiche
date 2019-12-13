@@ -12,11 +12,11 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="points" property="points" jdbcType="INTEGER" />
-    <result column="balance" property="balance" jdbcType="DOUBLE" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, remark, accountNum, password, mobile, state, userName, createTime, updateTime, 
-    points, balance
+    points, balance,card
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,6 +24,12 @@
     from customer
     where id = #{id,jdbcType=INTEGER}
   </select>
+    <select id="selectByMobile" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from customer
+        where mobile = #{mobile,jdbcType=VARCHAR}
+    </select>
     <select id="findPage" resultMap="BaseResultMap"  >
         select
         <include refid="Base_Column_List" />
@@ -42,11 +48,11 @@
     insert into customer (id, remark, accountNum, 
       password, mobile, state, 
       userName, createTime, updateTime, 
-      points, balance)
+      points, balance,card)
     values (#{id,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{accountnum,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
       #{username,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{points,jdbcType=INTEGER}, #{balance,jdbcType=DOUBLE})
+      #{points,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER},#{card,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.web.xiche.po.Customer" >
     insert into customer
@@ -84,6 +90,9 @@
       <if test="balance != null" >
         balance,
       </if>
+        <if test="card != null" >
+            card,
+        </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -117,8 +126,11 @@
         #{points,jdbcType=INTEGER},
       </if>
       <if test="balance != null" >
-        #{balance,jdbcType=DOUBLE},
+        #{balance,jdbcType=INTEGER},
       </if>
+        <if test="card != null" >
+            #{card,jdbcType=INTEGER},
+        </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.web.xiche.po.Customer" >
@@ -152,8 +164,11 @@
         points = #{points,jdbcType=INTEGER},
       </if>
       <if test="balance != null" >
-        balance = #{balance,jdbcType=DOUBLE},
+        balance = #{balance,jdbcType=INTEGER},
       </if>
+        <if test="card != null" >
+            card = #{card,jdbcType=INTEGER},
+        </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -168,7 +183,26 @@
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
       points = #{points,jdbcType=INTEGER},
-      balance = #{balance,jdbcType=DOUBLE}
+      balance = #{balance,jdbcType=INTEGER},
+      card = #{card,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <update id="updateMoney" parameterType="com.web.xiche.po.Customer">
+        update customer
+        <set>
+            <if test="updatetime != null" >
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="points != null and points>0" >
+                points = points -#{points,jdbcType=INTEGER},
+            </if>
+            <if test="balance != null and balance > 0" >
+                balance = balance-#{balance,jdbcType=INTEGER},
+            </if>
+            <if test="card != null">
+                card =card -#{card,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

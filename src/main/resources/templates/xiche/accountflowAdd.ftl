@@ -47,7 +47,7 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger"></span>客户手机号</label>
-								<input type="text" name="customerid" class="form-control" required="required" value="${(accountFlow.customerid)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="mobile" class="form-control" required="required" value="${(accountFlow.mobile)!}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -67,6 +67,7 @@
 							       	<option value="0">现金</option>
 							       	<option value="1">积分</option>
 							       	<option value="2">余额</option>
+                                    <option value="3">洗车卡</option>
 								</select> 
 							</div>
 						</div>

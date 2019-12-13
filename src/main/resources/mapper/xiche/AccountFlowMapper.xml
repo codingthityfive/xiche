@@ -10,14 +10,14 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="balance" property="balance" jdbcType="DOUBLE" />
     <result column="projectName" property="projectName" jdbcType="VARCHAR" />
-      <result column="carNumber" property="carNumber" jdbcType="VARCHAR"/>
-    
+    <result column="carNumber" property="carNumber" jdbcType="VARCHAR"/>
+      <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
   </resultMap>
   <insert id="insert" parameterType="com.web.xiche.po.AccountFlow" >
     insert into accountflow (id, customerId, projectId, 
-      type, status, createTime,carNumber)
+      type, status, createTime,carNumber,mobile)
     values (#{id,jdbcType=BIGINT}, #{customerid,jdbcType=BIGINT}, #{projectid,jdbcType=BIGINT}, 
-      #{type,jdbcType=BIT}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP},#{catNumber,jdbcType=VARCHAR})
+      #{type,jdbcType=BIT}, #{status,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP},#{catNumber,jdbcType=VARCHAR},#{mobile,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.web.xiche.po.AccountFlow" >
     insert into accountflow
@@ -44,7 +44,10 @@
         balance,
       </if>
         <if test="carNumber != null" >
-            carNumber
+            carNumber,
+        </if>
+        <if test="mobile != null" >
+            mobile,
         </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -70,8 +73,11 @@
         #{balance},
       </if>
     <if test="carNumber != null" >
-        #{carNumber}
+        #{carNumber},
     </if>
+        <if test="mobile != null" >
+            #{mobile},
+        </if>
     </trim>
   </insert>
   
@@ -102,29 +108,34 @@
   </update>
   
    <select id="findPage" resultMap="BaseResultMap"  >
-    select 
-     o.id,
-     o.customerId,
-     o.balance,
-     o.projectId,
-     o.type,
-     o.status,
-     o.createTime,
-     o.carNumber,
-     (select a.name from project a where a.id = o.projectId) as projectName 
-    from accountflow o 
-    where 1 = 1
-     <if test="customerid != null" >
-       and o.customerId = #{customerid}
-     </if>
-       <if test="carNumber != null" >
-           and o.carNumber = #{carNumber}
-       </if>
+        select
+         o.id,
+         o.customerId,
+         o.balance,
+         o.projectId,
+         o.type,
+         o.status,
+         o.createTime,
+         o.carNumber,
+         o.mobile,
+         (select a.name from project a where a.id = o.projectId) as projectName
+        from accountflow o
+        where 1 = 1
+         <if test="customerid != null" >
+           and o.customerId = #{customerid}
+         </if>
+         <if test="carNumber != null" >
+           and o.carNumber like concat('%',#{carNumber},'%')
+         </if>
+         <if test="start != null and end != null and start !='' and end != ''">
+            and o.createTime between #{start} and #{end}
+         </if>
+         group by id desc
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
      *
     from accountflow o 
-    where o.id = #{id,jdbcType=INTEGER}
+    where o.id = #{id}
   </select>
 </mapper>

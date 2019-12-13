@@ -1,5 +1,7 @@
 package com.web.xiche.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class AccountFlow {
@@ -20,6 +22,36 @@ public class AccountFlow {
     private String carNumber;
 
     private String projectName;
+
+    private String  start;
+
+    private String mobile;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    private String  end;
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
 
     public String getCarNumber() {
         return carNumber;

@@ -16,7 +16,7 @@ $(document).ready(function () {
         datatype: "json", //数据来源，本地数据（local，json,jsonp,xml等）
         height: "auto",//高度，表格高度。可为数值、百分比或'auto'
         //mtype:"GET",//提交方式
-        colNames: ['序号','项目','车牌号', '客户','价格'],
+        colNames: ['序号','项目','车牌号', '客户','价格','服务时间'],
         colModel: [{
             name: 'id',
             index: 'id',//索引。其和后台交互的参数为sidx
@@ -41,19 +41,20 @@ $(document).ready(function () {
             index: 'carNumber',
             width: 60,
         }, {
-            name: 'customerid',
-            index: 'customerid',
+            name: 'mobile',
+            index: 'mobile',
             width: 60,
         }, {
             name: 'balance',
             index: 'balance',
             width: 60,
         }
-//        , {
-//            name: 'type',
-//            index: 'type',
-//            width: 60,
-//        }, {
+       , {
+           name: 'createtime',
+           index: 'createtime',
+           width: 60,
+       }
+       //, {
 //            name: 'status',
 //            index: 'status',
 //            width: 60,
@@ -126,8 +127,10 @@ $(document).ready(function () {
 $("#queryBtn").click(function(){
     $("#grid-table").jqGrid('setGridParam', {
         postData: {
-           "name": $("#name").val(),//
-            "carNumber": $("#carNumber").val()
+           // "name": $("#name").val(),//
+            "carNumber": $("#carNumber").val(),
+            "start": $("#startDate").val(),
+            "end":$("#endDate").val()
         },page:1
     }).trigger('reloadGrid');
 });

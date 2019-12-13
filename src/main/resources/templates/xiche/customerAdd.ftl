@@ -40,7 +40,7 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>积分</label>
-								<input type="text" name="points" class="form-control" required="required" value="${(cus.points)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="points" class="form-control" required="required" value="${(cus.points)!?c}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
@@ -48,10 +48,18 @@
 						<div class="col-sm-3 marginTop5">
 							<div class="input-group">
 								<label class="input-group-addon"><span class="danger">*</span>余额</label>
-								<input type="text" name="balance" class="form-control" required="required" value="${(cus.balance)!}" data-msg-required='该字段为必填项'>
+								<input type="text" name="balance" class="form-control" required="required" value="${(cus.balance)!?c}" data-msg-required='该字段为必填项'>
 							</div>
 						</div>
 					</div>
+                    <div class="form-group">
+                        <div class="col-sm-3 marginTop5">
+                            <div class="input-group">
+                                <label class="input-group-addon"><span class="danger">*</span>洗车卡</label>
+                                <input type="text" name="card" class="form-control" required="required" value="${(cus.card)!}" data-msg-required='该字段为必填项'>
+                            </div>
+                        </div>
+                    </div>
 				</form>
 			</div>
 		</div>

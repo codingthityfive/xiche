@@ -21,4 +21,9 @@ public interface CustomerMapper {
     int updateByPrimaryKeySelective(Customer record);
 
     int updateByPrimaryKey(Customer record);
+
+    int updateMoney(Customer customer);
+
+    Customer selectByMobile(String mobile);
+
 }

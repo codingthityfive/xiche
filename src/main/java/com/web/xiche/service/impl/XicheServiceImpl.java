@@ -11,6 +11,7 @@ import com.web.xiche.po.Project;
 import com.web.xiche.service.XicheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -60,17 +61,44 @@ public class XicheServiceImpl implements XicheService {
     @Override
 	public PageInfo<AccountFlow> findAccountFlowPageInfo(PageInfo<AccountFlow> pageInfo, AccountFlow accountFlow) {
 		PageHelper.startPage(pageInfo.getPageNum(), pageInfo.getPageSize());
+		if(!StringUtils.isEmpty(accountFlow.getStart())&&!StringUtils.isEmpty(accountFlow.getEnd())){
+            accountFlow.setStart(accountFlow.getStart()+" 00:00:00");
+            accountFlow.setEnd(accountFlow.getEnd()+" 23:59:59");
+        }
 		return new PageInfo<AccountFlow>(AccountFlowMapper.findPage(accountFlow));
 	}
 	@Override
 	public int saveOrUpdateAccountFlow(AccountFlow accountFlow) {
-		int result = 0;
+		Integer result = 0;
 		Integer id = accountFlow.getId();
-        accountFlow.setCreatetime(new Date());
+        Customer customer = customerMapper.selectByMobile(accountFlow.getMobile());
+        if (customer != null) {
+            accountFlow.setCustomerid(customer.getId());
+        }
+        AccountFlow accountFlow1 = null;
         if (id == null){
+            accountFlow.setCreatetime(new Date());
+            accountFlow1 = accountFlow;
             result = AccountFlowMapper.insertSelective(accountFlow);
         }else {
+            accountFlow1 = AccountFlowMapper.selectByPrimaryKey(id);
+            accountFlow1.setBalance(accountFlow1.getBalance() - accountFlow.getBalance());
             result = AccountFlowMapper.updateByPrimaryKeySelective(accountFlow);
+        }
+        Customer customer1 = new Customer();
+        if (result > 0&&accountFlow.getCustomerid()>0&&customer!=null) {
+            switch (accountFlow.getType()){
+                case 1:
+                    customer1.setId(customer.getId());
+                    customer1.setPoints(accountFlow1.getBalance().intValue());
+                case 2:
+                    customer1.setId(customer.getId());
+                    customer1.setBalance(accountFlow1.getBalance().intValue());
+                case 3:
+                    customer1.setId(customer.getId());
+                    customer1.setCard(1);
+            }
+            customerMapper.updateMoney(customer1);
         }
         return  result;
 	}
