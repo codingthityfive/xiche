@@ -55,4 +55,6 @@ public interface XicheService {
     Customer findCustomerById(int id);
 
     int saveOrUpdateCustomer(Customer customer);
+
+    int delProject(Project project);
 }

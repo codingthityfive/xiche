@@ -32,7 +32,11 @@ public class Customer {
     }
 
     public void setCard(Integer card) {
-        this.card = card;
+        if (card==null){
+            this.card = 0;
+        }else{
+            this.card = card;
+        }
     }
 
     public Integer getId() {
@@ -112,7 +116,11 @@ public class Customer {
     }
 
     public void setPoints(Integer points) {
-        this.points = points;
+        if (points==null){
+            this.points=0;
+        }else{
+            this.points = points;
+        }
     }
 
     public Integer getBalance() {
@@ -120,6 +128,10 @@ public class Customer {
     }
 
     public void setBalance(Integer balance) {
-        this.balance = balance;
+        if (balance == null) {
+            this.balance=0;
+        }else{
+            this.balance = balance;
+        }
     }
 }

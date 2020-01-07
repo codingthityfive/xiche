@@ -16,7 +16,7 @@ $(document).ready(function () {
         datatype: "json", //数据来源，本地数据（local，json,jsonp,xml等）
         height: "auto",//高度，表格高度。可为数值、百分比或'auto'
         //mtype:"GET",//提交方式
-        colNames: ['序号','项目名称','类型', '价格','积分'],
+        colNames: ['序号','项目名称','类型', '价格','积分','操作'],
         colModel: [{
             name: 'id',
             index: 'id',//索引。其和后台交互的参数为sidx
@@ -48,6 +48,19 @@ $(document).ready(function () {
             name: 'point',
             index: 'point',
             width: 60,
+        }, {
+            width:60,
+            name: 'operate',
+            align:'center',
+            index: 'operate',
+            formatter: function (value, grid, rows, state) {
+                var html = '';
+
+                //权限控制
+                html = html+'<button class="btn btn-white" onclick="toDel(\''+ rows.id+ '\');">删除</button>';
+
+                return html;
+            }
         }
 
             // {
@@ -127,3 +140,23 @@ $("#queryBtn").click(function(){
         },page:1
     }).trigger('reloadGrid');
 });
+
+//删除
+function toDel(id) {
+    confirmDialog("确认信息","确定删除该项目？",deletePro,id);
+}
+function deletePro(id) {
+    $.post("/xiche/delpro?id="+id, '', function(data) {
+        if (data.code == 0) {
+            btn_alertDialog('提示','删除成功');
+            //刷新列表
+            $("#grid-table").jqGrid('setGridParam', {
+                postData: {
+//            "name": $("#name").val()//标签名
+                },page:1
+            }).trigger('reloadGrid');
+        } else {
+            btn_alertDialog('提示',data.msg);
+        }
+    });
+}

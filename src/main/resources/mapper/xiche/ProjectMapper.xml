@@ -126,10 +126,7 @@
     select 
     <include refid="Base_Column_List" />
     from project
-    where 1 = 1
-     <if test="status != null" >
-       and status = #{status}
-     </if>
+    where 1 = 1 and status =1
     <if test="name != null" >
     	and name = #{name}
     </if>

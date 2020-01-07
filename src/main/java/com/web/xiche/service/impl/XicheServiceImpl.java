@@ -86,7 +86,7 @@ public class XicheServiceImpl implements XicheService {
             result = AccountFlowMapper.updateByPrimaryKeySelective(accountFlow);
         }
         Customer customer1 = new Customer();
-        if (result > 0&&accountFlow.getCustomerid()>0&&customer!=null) {
+        if (result > 0&&accountFlow1.getCustomerid()!=null&&accountFlow1.getCustomerid()>0&&customer!=null) {
             switch (accountFlow.getType()){
                 case 1:
                     customer1.setId(customer.getId());
@@ -124,6 +124,12 @@ public class XicheServiceImpl implements XicheService {
             result = customerMapper.updateByPrimaryKeySelective(customer);
         }
         return  result;
+    }
+
+    @Override
+    public int delProject(Project project) {
+	    project.setStatus(0);
+        return projectMapper.updateByPrimaryKeySelective(project);
     }
 
 }

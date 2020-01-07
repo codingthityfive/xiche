@@ -48,4 +48,4 @@ spring:
   mvc:
     static-path-pattern: /static/**
   profiles:
-    active: test
+    active: dev

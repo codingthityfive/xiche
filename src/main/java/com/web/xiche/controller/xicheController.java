@@ -81,6 +81,21 @@ public class xicheController extends AbstractCommonController {
 		return ResultVO.createSuccess(project);
 	}
 
+    @RequestMapping(value = "/delpro")
+    @ResponseBody
+    public ResultVO<Project> delpro(Project project) {
+        logger.info("11");
+        Integer id = project.getId();
+        try {
+            xicheService.delProject(project);
+        } catch (IllegalArgumentException e) {
+            return ResultVO.createResult(2, e.getMessage(), project);
+        } catch (Exception e) {
+            return ResultVO.createResult(3, e.getMessage(), project);
+        }
+        return ResultVO.createSuccess(project);
+    }
+
 	/**
 	 * 项目跳转到编辑页面
 	 *
@@ -166,6 +181,7 @@ public class xicheController extends AbstractCommonController {
 		} catch (IllegalArgumentException e) {
 			return ResultVO.createResult(2, e.getMessage(), accountFlow);
 		} catch (Exception e) {
+		    e.printStackTrace();
 			return ResultVO.createResult(3, e.getMessage(), accountFlow);
 		}
 		return ResultVO.createSuccess(accountFlow);
@@ -218,6 +234,9 @@ public class xicheController extends AbstractCommonController {
 //        List<Project> projectList = xicheService.findAll();
 //        model.addAttribute("projectList", projectList);
         Customer customer = new Customer();
+        customer.setPoints(0);
+        customer.setCard(0);
+        customer.setBalance(0);
         model.addAttribute("cus", customer);
         return "xiche/customerAdd";
     }

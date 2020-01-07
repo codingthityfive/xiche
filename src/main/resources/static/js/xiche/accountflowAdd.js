@@ -51,7 +51,13 @@ $(function() {
     });
     $("#model_close_btn").click(function () {
         dialog.close().remove();
-    })
+    });
+    $("#type").change(function(){
+        var type=$('#type').val();
+        if (type==3){
+            $("#balance").val(1);
+        }
+    });
     
     $("#projectid").change(function(){
 		var projectId = $("#projectid").val();
